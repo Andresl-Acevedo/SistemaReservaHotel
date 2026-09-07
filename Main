@@ -1,1 +1,46 @@
+package sistema_de_reservas_de_hotel;
 
+public class Sistema_de_reservas_de_hotel {
+
+    public static void main(String[] args) {
+       
+        Administrador administrador = new Administrador("Juan");
+        Habitacion habitacion = new Habitacion(101, "Suite");
+        Huesped huesped = new Huesped("Andres");
+
+        System.out.println("HABITACION");
+        System.out.println("Numero: " + habitacion.getNumero());
+        System.out.println("Tipo: " + habitacion.getTipo());
+        System.out.println("Estado: " + habitacion.getEstado());
+
+        administrador.cambiarEstadoHabitacion(habitacion, "Ocupada");
+
+        System.out.println("\nNuevo estado: " + habitacion.getEstado());
+
+        huesped.realizarReserva(habitacion, "10/09/2026", "15/09/2026");
+
+        Reserva reserva = huesped.getReserva();
+
+        System.out.println("\nRESERVA");
+
+        System.out.println("Huesped: " + reserva.getHuesped().getNombre());
+
+        System.out.println("Habitacion: " + reserva.getHabitacion().getNumero());
+
+        System.out.println("Fecha de entrada: " + reserva.getFechaEntrada());
+
+        System.out.println("Fecha de salida: " + reserva.getFechaSalida());
+
+        huesped.eliminarReserva();
+
+        System.out.println("\nReserva eliminada.");
+        
+        System.out.println("Huesped sigue registrado: " + huesped.getNombre());
+        
+        System.out.println("Habitacion sigue registrada: " + habitacion.getNumero());
+
+        administrador.cambiarEstadoHabitacion(habitacion, "Mantenimiento");
+
+        System.out.println("\nEstado final de la habitacion: " + habitacion.getEstado());
+    }
+}
